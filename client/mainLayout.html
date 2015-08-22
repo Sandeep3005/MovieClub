@@ -1,0 +1,38 @@
+<template name="mainLayout">
+<!--
+<div class="container-fluid">
+	<img src="x.png" style="margin-top:-100px">
+</div>
+-->
+ <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!--Logo-->
+            <div class="navbar-header">
+                <a href="/">
+					<img class="img-responsive logo" src="x.png" >
+				</a>
+            </div>
+            <!--Menu Items-->
+            <div>                
+                <!--Right Align -->
+                <ul class="nav navbar-nav navbar-right">		
+					<li> <a href="/signup" >SignUp</a></li>
+                    <!--drop down menu-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">SignIn <strong class="caret"></strong></a>
+                        <div class="dropdown-menu" style="width:285px; padding: 15px; padding-bottom: 5px;">
+                            <form method="post" action="login" accept-charset="UTF-8">
+								<input class="txtInput" type="text" placeholder="MembersID " id="membersid" name="membersid">
+								<input class="txtInput" type="password" placeholder="Password" id="password" name="password">															
+								<input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
+						     </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<!--############################ LInks will be displayed Here ##############################-->
+	{{> yield}}
+</template>

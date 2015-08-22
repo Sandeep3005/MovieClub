@@ -1,0 +1,1 @@
+UserInfo = new Mongo.Collection("UserInfo");
