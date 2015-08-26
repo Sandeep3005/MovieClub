@@ -1,3 +1,107 @@
 <template name="movieDescriptionSection">
-		
+	<div class="container">
+			<div class="row ">
+				<div class="col-md-2"></div>
+				<div class="col-md-4 ">
+						<div class="carousel slide panelSize" id="movieCarousel">
+								<ol class="carousel-indicators">
+								<!--
+									<li data-target = "#movieCarousel" data-slide-to = "0" class="active"></li>
+									<li data-target = "#movieCarousel" data-slide-to = "1"></li>
+									<li data-target = "#movieCarousel" data-slide-to = "2"></li>
+									<li data-target = "#movieCarousel" data-slide-to = "3"></li>
+									<li data-target = "#movieCarousel" data-slide-to = "4"></li>
+									-->
+								</ol>
+								<div class= "carousel-inner">
+									<div class="item active ">
+										  <img src="movie1.jpg" alt="Movie Poster 1" class="img-responsive thumbnail imgDimension">										  										  										  										  							
+									</div>
+									<div class="item">
+										  <img src="movie2.jpg" alt="Movie Poster 2" class="img-responsive thumbnail imgDimension ">										  										  										  
+									</div>
+									<div class="item">
+										  <img src="movie3.jpg" alt="Movie Poster 3" class="img-responsive thumbnail imgDimension">										  										  										  
+									</div>
+									<div class="item">
+										  <img src="movie4.jpg" alt="Movie Poster 4" class="img-responsive thumbnail imgDimension">										  										  										  
+									</div>
+									<div class="item">
+										  <img src="movie5.jpg" alt="Movie Poster 5" class="img-responsive thumbnail imgDimension">										  										  										  
+									</div>									
+								</div>								
+								<a class="carousel-control left"  href="#movieCarousel" data-slide="prev" >
+									<span class="icon-prev"></span>
+								</a>
+								
+								<a class="carousel-control right"  href="#movieCarousel" data-slide="next" >
+									<span class="icon-next"></span>
+								</a>
+						</div>
+				</div>
+				<div class="col-md-4 ">
+					  <div class="panel panel-default panelSize">
+					      <div class="panel-heading headPanel">{{movieName}}</div>
+					      <div class="panel-body">
+									
+								<div class="row">
+									<div class="col-md-12 movieDesc">
+										
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-md-5">
+										Director 
+									</div>
+									<div class="col-md-7 movieDirector">
+										
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5">
+										Original Name 
+									</div>
+									<div class="col-md-7 originalName">
+										
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5">
+										Release Date 
+									</div>
+									<div class="col-md-7 releaseDate">
+										
+									</div>
+								</div>
+								<div class="row">
+										<div class="col-md-5">	
+											IMDB 
+										</div>
+										<div class="col-md-5">	
+											<a href="" target ="_blank" class="imdbLink">IMDB Link</a>
+										</div>
+								</div>
+								<div class="row"><br><br></div>
+								
+								<div class="row"></div>
+								<div class="row">										
+									<div class="col-md-12">
+											<button type="submit" class="btn btn-success voteButton" id="buttonVote">VOTE</button>
+											
+									</div>														
+								</div>
+						  </div>
+					  </div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>	
+			
+			<!--Put next colum here-->
+		</div>
+
+			
+
+	
+
 </template>

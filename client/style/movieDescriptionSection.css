@@ -1,0 +1,22 @@
+.headPanel
+{
+	font-weight : bold;
+	text-align : center;	
+}
+.panelSize
+{
+	height:200%
+}
+.voteButton
+{
+	min-width: 100%;
+   /* max-width: 250px;*/
+}
+.hideButton
+{
+	display:none;
+}
+.showButton
+{
+	display:block;
+}

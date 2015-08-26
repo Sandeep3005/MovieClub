@@ -1,0 +1,21 @@
+<template name = "userHomeSection">
+	<div class="container thumbnail">
+		<div class="row">
+			<div class="col-md-12">
+					Welcome {{userName}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+					Please vote for the movie you want to watch during European Film Festival organized by our Club.										
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+					Click on the <a href="{{ downloadPDF }}" target="_blank" download>Download</a> link to download schedule, also availble in top section download.
+			</div>
+		</div>
+	</div>
+	
+	{{> movieDescriptionSection}}
+</template>

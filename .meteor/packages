@@ -1,0 +1,20 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+mrt:bootstrap-3
+jquery
+iron:router
+rgoomar:bootstrap-validator
+mrt:bootstrap-datepicker
+rajit:bootstrap3-datepicker
+ctjp:meteor-intl-tel-input
+isaac:intl-tel-input
+email
+u2622:persistent-session
+autopublish
+insecure
+houston:admin

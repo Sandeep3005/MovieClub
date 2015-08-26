@@ -1,9 +1,8 @@
- Meteor.subscribe("UserInfo");
- 
 Template.signUpSection.rendered =  function()
 {	
+	
 	var validator = $('#registration-form').bootstrapValidator({
-			/*
+			
 			feedbackIcons :{
 							valid :"glyphicon glyphicon-ok",
 							invalid : "glyphicon glyphicon-remove",
@@ -18,7 +17,7 @@ Template.signUpSection.rendered =  function()
 														message:"First Name is mandatory"
 													}									
 											}
-						   },/*FName control ends here*
+						   },/*FName control ends here**/
 				lName : {
 								validators : 
 											{
@@ -27,7 +26,7 @@ Template.signUpSection.rendered =  function()
 														message:"Last Name is mandatory"
 													}									
 											}
-						   },/*lName control ends here*
+						   },/*lName control ends here**/
 				birthday : {
 						validators : 
 									{
@@ -42,7 +41,7 @@ Template.signUpSection.rendered =  function()
 													
 												}
 									}
-							},/*Birthday control ends here*
+							},/*Birthday control ends here**/
 				contact : {
 							validators :
 								{
@@ -60,7 +59,7 @@ Template.signUpSection.rendered =  function()
 													message : "Contact is invalid"
 											}	
 							   }
-				},/*Contact control ends here
+				},/*Contact control ends here*/
 				email : { 
 								message : "Email Address is Required",
 								validators:{
@@ -73,7 +72,7 @@ Template.signUpSection.rendered =  function()
 												}
 										}
 									
-							},/*Email Ends Here
+							},/*Email Ends Here*/
 					pwd : 
 							{
 								 validators : 
@@ -93,7 +92,7 @@ Template.signUpSection.rendered =  function()
 													}
 																			
 								 }
-							},/* Password ends here
+							},/* Password ends here*/
 					confirmPassword : 
 							{
 								validators :
@@ -110,9 +109,9 @@ Template.signUpSection.rendered =  function()
 									
 								}
 							
-							}/* Confirm Password ends here
+							}/* Confirm Password ends here*/
 				}
-				*/
+				
 	});
 	
 	validator.on("success.form.bv", function (evt,tmp)

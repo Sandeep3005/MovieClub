@@ -15,9 +15,19 @@ Meteor.methods({
 				if(id)	{ return id;} else {	return error; }
 				
 			});
-	}
+},
+setActivationStatus: function(id)
+{
+	return UserInfo.update(id,
+	{ 
+		$set : { ActivationStatus: 1} 
+	},
+	function(error,id)
+	{
+		if(id)	{ return id;} else {	return error; }
+	});
+}
 });
 
-Meteor.publish("UserInfo", function () {
-    return UserInfo.find();
-  });
+
+  
