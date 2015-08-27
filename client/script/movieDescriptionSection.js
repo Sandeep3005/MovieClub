@@ -1,30 +1,18 @@
 Template.movieDescriptionSection.rendered =  function()
-{
-		i=0;
-		maxMovies = 5;
+{		
+		var userRecord1,userID;
 		Session.set("isLeftClicked",false);
 		Session.set("isRightClicked",false);
-		var nextImage, prevImage,currImage;
+		var nextImage, prevImage,currImage,userID;
 		var activeSlide = $('.active');
 		currImage = activeSlide.find('img').attr('src');
 		Session.set("currI",currImage);
-		//alert(currImage);
-	
-	
 
-
-		//alert("Prev Image is "+prevImage+"**CurrentImage = "+currImage+"**Next Image is "+nextImage);
-		
-		
 		$('.carousel').carousel({
             interval: 1000 //changes the speed
 			
         });
-		
-		//memID = Session.get("ID");
-		//alert(memID);
-	
-		
+				
 		$(".voteButton").mouseover( function()
 		{
 			$('#movieCarousel').carousel('pause');
@@ -33,7 +21,21 @@ Template.movieDescriptionSection.rendered =  function()
 		{
 			$('#movieCarousel').carousel('cycle');
 		});
-		//Session.setDefault("Index",0);
+		
+		userID = Session.get("ID");
+		
+		//alert("in render = "+userID);
+		
+		if(userID == undefined)
+		{
+			$("#buttonVote").addClass("hideObject");
+		}
+		else
+		{
+			
+			Meteor.call("voteEligibility");
+		}
+		
 }
 Template.movieDescriptionSection.helpers({
 	
@@ -45,7 +47,7 @@ Template.movieDescriptionSection.helpers({
 		var currI = Session.get("currI");
 		//alert(currI);
 		
-		movieRecord = MovieInfo.findOne({Poster:currI});
+		movieRecord = MovieInfo.findOne({ Poster : currI });
 		$(".panel-heading").text(movieRecord.Name);
 		$(".movieDesc").text(movieRecord.Description);
 		$(".movieDirector").text(movieRecord.Director);
@@ -60,7 +62,7 @@ Meteor.methods({
 		setImage:function()
 		{
 			//alert("setImage is activated");
-			var to_slide = $('.carousel-indicators li').attr('data-slide-no');
+			//var to_slide = $('.carousel-indicators li').attr('data-slide-no');
 			//alert("To Slide = "+to_slide);
 			var activeSlide = $('.active');
 
@@ -89,7 +91,28 @@ Meteor.methods({
 			Session.set("curImg",currImage);
 			Session.set("nxtImg",nextImage);
 			Session.set("prvImg",prevImage);
+		},
+		voteEligibility:function()
+		{
+			var memberID,makeChange;		
+			//alert("inside vote eligibility");
+			memberID = Session.get("ID");
+			//alert(memberID);
+			mdsve_userRecord = UserInfo.findOne({MembersID:memberID});
+			//alert("userRecord = "+mdsve_userRecord.Voted);
+			//makeChange =0;
+			
+			
+			if(mdsve_userRecord.Voted == 1)
+			{				
+				$("#buttonVote").removeClass("btn-success");
+				$("#buttonVote").addClass("btn-danger");
+				$("#buttonVote").html("Thanks for Voting !!!");
+				 $('#buttonVote').attr("disabled", true);
+			}
+
 		}
+		
 	 });
 Template.movieDescriptionSection.events({
 	  'slide.bs.carousel': function (evt, tmp) {
@@ -124,28 +147,53 @@ Template.movieDescriptionSection.events({
 	},
 	"click .voteButton" : function(evt,tmp)
 	{
-		var mID,currentVote,memID;
-		//memID = Session.get("ID");
-		alert("Before "+memID);
-		//Session.setPersistent("ID","None");
-		//memID = Session.get("ID");
-		//alert("After "+memID);
-		mID = Session.get("movieID");
-		movieRecord = MovieInfo.findOne({_id:mID});
+		var mID,currentVote,memberID,userx,movieRecord,currentVote,voteInfoMovie,voteInfoUser,mdsvb_userRecord;		
 		
-		currentVote = movieRecord.Vote;
-		currentVote = currentVote +1;
-		voteInfo ={
-				idMovie : mID,
-				vote : currentVote
-		};
-		//alert(mID);
-		Meteor.call("updateMovieInfo",voteInfo,
-			function(error,result)
-			{
+		memberID = Session.get("ID");
+		//alert(memberID);
+		
+		mdsvb_userRecord = UserInfo.findOne({MembersID:memberID});
+		
+		//alert("UserVoted =" +mdsvb_userRecord);
+		if(mdsvb_userRecord.Voted == 0)
+		{
+				//alert("in if ");
+				mID = Session.get("movieID");
+				//alert("mID "+mID);
+				movieRecord = MovieInfo.findOne({_id:mID});
+		
+				currentVote = movieRecord.Vote;
+				currentVote = currentVote +1;
+				voteInfoMovie ={
+					idMovie : mID,
+					vote : currentVote
+				};
+				//alert(mID);
+				Meteor.call("updateMovieInfo",voteInfoMovie,
+				function(error,result)
+				{
 				
-			}
-		);
+				});
+				
+				voteInfoUser ={
+					idUser : mdsvb_userRecord._id,
+					voted   : 1
+				};
+				Meteor.call("updateUserInfo",voteInfoUser,
+				function(error,result)
+				{
+					
+				});
+		
+		}
+	
+			//userRecord = UserInfo.findOne({MembersID:memberID});
+			//alert("UserVoted After=" +userRecord.Voted);
+			
+			Meteor.call("voteEligibility");
+		
+		
+		
 	}
 	
 });

@@ -117,7 +117,7 @@ Template.signUpSection.rendered =  function()
 	validator.on("success.form.bv", function (evt,tmp)
 		{	
 			evt.preventDefault();
-			var fName,lName,birthday,contact,email,password;
+			var fName,lName,birthday,contact,email,password,vote,activation;
 			var month,day,year,activation;
 			var membersID,base,initPoint;
 			var totalRecord;
@@ -141,6 +141,7 @@ Template.signUpSection.rendered =  function()
 			//0 = NOT ACTIVE
 			//1 = ACTIVE
 			activation = 0;
+			vote = 0;
 			fName = $('#fName').val();
 			lName = $('#lName').val();
 			birthday = new Date($('#birthday').val());
@@ -164,7 +165,8 @@ Template.signUpSection.rendered =  function()
 				email:email,
 				password:password,
 				membersID:membersID,
-				activationStatus:activation			
+				activationStatus:activation,
+				voteStatus:vote
 				
 			};
 	

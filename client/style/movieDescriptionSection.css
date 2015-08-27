@@ -5,7 +5,11 @@
 }
 .panelSize
 {
-	height:200%
+
+              min-height: 510px;
+              max-height:510px; 
+          
+        
 }
 .voteButton
 {
@@ -19,4 +23,19 @@
 .showButton
 {
 	display:block;
+}
+.movieDesc
+{
+	height: 200px;
+	margin-bottom:20px;
+}
+.displayDirector,.displayOriginalName,.displayReleaseDate,.displayIMDBLink
+{
+	height:10px;
+}
+.displayVoteButton
+{
+
+margin-top:130px;
+
 }

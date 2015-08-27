@@ -8,7 +8,9 @@ Meteor.methods({
 					Email:userRecord.email,
 					Password:userRecord.password,	
 					MembersID:userRecord.membersID,
-					ActivationStatus:userRecord.activationStatus
+					ActivationStatus:userRecord.activationStatus,
+					Voted:userRecord.voteStatus
+					
 			},
 			function(error,id)
 			{

@@ -1,7 +1,4 @@
-Template.mainLayout.rendered = function()
-{
-	//Session.setPersistent("ID","None");	
-}
+
 Template.mainLayout.events ({
 
 	"click #signIn": function(evt,tmp)
@@ -10,10 +7,11 @@ Template.mainLayout.events ({
 			var membersID,password,record;
 			
 			membersID = $("#membersid").val();
-			password = $("#password").val();
+			password    = $("#password").val();
 	
-			//alert(password);
+			//alert(membersID);
 			record = UserInfo.findOne({MembersID:membersID});
+			//alert(record );
 			if(!record)
 			{
 				//alert("in if");
@@ -33,7 +31,7 @@ Template.mainLayout.events ({
 							
 							Session.setPersistent("ID",membersID);
 							//alert("membersID after Session= "+Session.get("ID"));
-							if(record.ActivationStatus == 1)
+							if(record.ActivationStatus == 0)
 							{
 								Meteor.call("setActivationStatus",record._id,
 								function(error,result)
@@ -47,6 +45,18 @@ Template.mainLayout.events ({
 					
 			}
 			
+	},
+	"click  #signOutTop":function(evt,tmp)
+	{
+		//alert("Inside");
+		//var idUser=Session.get("ID");
+		//alert("Before = "+idUser);
+		
+		Session.clear("ID");
+		
+		//var idUser=Session.get("ID");
+		//alert("After = "+idUser);
 	}
+	
 });
 
